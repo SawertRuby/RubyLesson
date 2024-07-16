@@ -42,3 +42,4 @@ class DeviseCreateModelS < ActiveRecord::Migration[7.2]
     # add_index :model_s, :unlock_token,         unique: true
   end
 end
+ 
