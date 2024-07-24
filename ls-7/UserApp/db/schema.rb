@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_16_131239) do
+ActiveRecord::Schema[7.2].define(version: 2024_07_24_222212) do
   create_table "lab_reports", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.string "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_lab_reports_on_user_id"
   end
 
   create_table "model_s", force: :cascade do |t|
@@ -38,4 +40,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_16_131239) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "lab_reports", "users"
 end

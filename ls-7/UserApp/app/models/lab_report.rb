@@ -1,5 +1,8 @@
 class LabReport < ApplicationRecord
   belongs_to :user
-  validate :Title, presense: true, length:{ maximum: 250}
-  validate :Description, presense: true, length:{ maximum: 500}
+  validates :title, presence: true, length:{ maximum: 250}
+  validates :description, presence: true, length:{ maximum: 500}
+
+  GRADES = %w[A B C D E FX F]
+  validates :grade, presence: true, inclusion: { in: GRADES }
 end
