@@ -1,0 +1,32 @@
+<h1>Lab Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @lab_reports.present? %>
+      <% @lab_reports.each do |lab_report| %>
+        <tr>
+          <td><%= link_to lab_report.title, lab_report %></td>
+          <td><%= lab_report.description %></td>
+          <td><%= lab_report.user.email %></td>
+          <td>
+            <%= link_to 'Show', lab_report %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="4">No lab reports available</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Lab Report', new_lab_report_path %>
