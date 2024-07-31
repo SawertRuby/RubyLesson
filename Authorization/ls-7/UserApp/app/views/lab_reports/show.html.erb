@@ -1,0 +1,18 @@
+<h1><%= @lab_report.title %></h1>
+
+<p>
+  <strong>Description:</strong>
+  <%= @lab_report.description %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @lab_report.grade %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @lab_report.user.email %>
+</p>
+
+<%= link_to 'Back', lab_reports_path %>

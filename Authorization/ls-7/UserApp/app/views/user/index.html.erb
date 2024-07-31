@@ -1,0 +1,8 @@
+<h1>Lab Reports</h1>
+
+<% @users.each do |user| %>
+  <h2><%= link_to user.email, Email %></h2>
+  <p><%= user.FirstName%></p>
+  <p><%= user.LastName%></p>
+<% end %>
+  

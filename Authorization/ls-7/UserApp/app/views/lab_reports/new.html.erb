@@ -1,0 +1,41 @@
+<h1>New Lab Report</h1>
+
+<%= form_with(model: @lab_report, local: true) do |form| %>
+  <% if @lab_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lab_report.errors.count, "error") %> prohibited this lab_report from being saved:</h2>
+
+      <ul>
+        <% @lab_report.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade %>
+    <%= form.select :grade, options_for_select(LabReport::GRADES) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id, "Select User" %>
+    <%= form.collection_select :user_id, @users, :id, :email, prompt: "Choose a User" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', lab_reports_path %>

@@ -4,6 +4,7 @@
     <title><%= content_for(:title) || "User App" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,9 +16,24 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= csrf_meta_tags %>
+
   </head>
 
   <body>
+  <% if user_auth_signed_in? %>
+  <%= link_to 'Users', users_path %> |
+      <%= link_to 'Lab Reports', lab_reports_path %>
+  <%= link_to 'Sing Out', destroy_user_auth_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Sign up', new_user_auth_registration_path %> |
+  <%= link_to 'Login', new_user_auth_session_path %>
+<% end %>
+
+
+
     <%= yield %>
   </body>
 </html>
